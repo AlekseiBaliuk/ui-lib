@@ -1,42 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
+import React, { useState } from "react";
+import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { FaHome } from "react-icons/fa";
+import { FiLoader } from "react-icons/fi";
+import { AiOutlineAntDesign } from "react-icons/ai";
+import { FaCircleDot } from "react-icons/fa6";
 
 type NavLink = {
   kind: "link";
   label: string;
   href: string;
-  icon: string;
+  icon: React.ReactNode;
 };
 
 type NavGroup = {
   kind: "group";
   id: string;
   label: string;
-  icon: string;
+  icon: React.ReactNode;
   items: NavLink[];
 };
 
 type NavItem = NavLink | NavGroup;
 
 const nav: NavItem[] = [
-  { kind: "link", label: "Home", href: "/", icon: "🏠" },
+  { kind: "link", label: "Home", href: "/", icon: <FaHome /> },
 
   {
     kind: "group",
     id: "loaders",
     label: "Loaders",
-    icon: "⏳",
+    icon: <FiLoader />,
     items: [
       {
         kind: "link",
         label: "Gradient Light Preloader",
         href: "/loaders/gradientLightPreloader",
-        icon: "🌀",
+        icon: <FaCircleDot />,
       },
       // { kind: "link", label: "Dots", href: "/loaders/dots", icon: "…" },
     ],
@@ -46,10 +50,10 @@ const nav: NavItem[] = [
     kind: "group",
     id: "ui",
     label: "UI",
-    icon: "🧩",
+    icon: <AiOutlineAntDesign />,
     items: [
-      { kind: "link", label: "Animated 404 Page", href: "/ui/animated404page", icon: "🔘" },
-      // { kind: "link", label: "Cards", href: "/ui/cards", icon: "🗂️" },
+      { kind: "link", label: "Animated 404 Page", href: "/ui/animated404page", icon: <FaCircleDot /> },
+      { kind: "link", label: "Social Media Hover Effect", href: "/ui/socialMediaHoverEffect", icon: <FaCircleDot />},
     ],
   },
 ];
@@ -89,7 +93,7 @@ export default function SidebarLayout({
       >
         <div className="h-14 px-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
           {!collapsed && (
-            <div className="font-semibold text-gray-800 dark:text-gray-100">
+            <div className="font-semibold">
               Menu
             </div>
           )}
@@ -102,7 +106,7 @@ export default function SidebarLayout({
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             aria-label="Toggle sidebar"
           >
-            <Bars3CenterLeftIcon className="w-6 h-6 text-gray-700 dark:text-gray-200" />
+            <IoMenu className="w-6 h-6" />
           </button>
         </div>
 
@@ -193,7 +197,7 @@ export default function SidebarLayout({
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 main-content">
-        <div className="max-w-4xl mx-auto">{children}</div>
+        <div className="max-w-4xl">{children}</div>
       </main>
     </div>
   );
