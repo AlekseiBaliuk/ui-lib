@@ -197,7 +197,7 @@ export default function SidebarLayout({
 
       {/* Content */}
       <main className="flex-1 overflow-y-auto p-6 main-content">
-        <div className="max-w-4xl">{children}</div>
+        <div className="w-full h-full">{children}</div>
       </main>
     </div>
   );
