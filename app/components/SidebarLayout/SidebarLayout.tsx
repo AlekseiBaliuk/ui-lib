@@ -42,7 +42,7 @@ const nav: NavItem[] = [
         href: "/loaders/gradientLightPreloader",
         icon: <FaCircleDot />,
       },
-      // { kind: "link", label: "Dots", href: "/loaders/dots", icon: "…" },
+      { kind: "link", label: "CSS Loader", href: "/loaders/cssLoader", icon: <FaCircleDot /> },
     ],
   },
 
@@ -53,7 +53,8 @@ const nav: NavItem[] = [
     icon: <AiOutlineAntDesign />,
     items: [
       { kind: "link", label: "Animated 404 Page", href: "/ui/animated404page", icon: <FaCircleDot /> },
-      { kind: "link", label: "Social Media Hover Effect", href: "/ui/socialMediaHoverEffect", icon: <FaCircleDot />},
+      { kind: "link", label: "Social Media Hover Effect", href: "/ui/socialMediaHoverEffect", icon: <FaCircleDot /> },
+      { kind: "link", label: "Login and Register", href: "/ui/loginAndRegister", icon: <FaCircleDot /> },
     ],
   },
 ];
