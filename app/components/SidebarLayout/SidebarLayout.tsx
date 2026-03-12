@@ -55,6 +55,10 @@ const nav: NavItem[] = [
       { kind: "link", label: "Animated 404 Page", href: "/ui/animated404page", icon: <FaCircleDot /> },
       { kind: "link", label: "Social Media Hover Effect", href: "/ui/socialMediaHoverEffect", icon: <FaCircleDot /> },
       { kind: "link", label: "Login and Register", href: "/ui/loginAndRegister", icon: <FaCircleDot /> },
+      { kind: "link", label: "Lavalamp CSS Menu", href: "/ui/lavalampCssMenu", icon: <FaCircleDot /> },
+      { kind: "link", label: "Fun 404 Page", href: "/ui/fun404page", icon: <FaCircleDot /> },
+      { kind: "link", label: "Animated Input", href: "/ui/animatedInput", icon: <FaCircleDot /> },
+      { kind: "link", label: "Drawer Menu", href: "/ui/drawerMenu", icon: <FaCircleDot /> },
     ],
   },
 ];
