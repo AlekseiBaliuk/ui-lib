@@ -1,0 +1,238 @@
+$bdrds: 3px;
+$white: #fff;
+$black: #000;
+$gray: #ccc;
+$salmon: #e8716d;
+$smoky-black: rgba(#222222, .85);
+$ff: 'Montserrat', sans-serif;
+$ff-body: 12px;
+$ff-light: 300;
+$ff-regular: 400;
+$ff-medium: 500;
+
+@keyframes bounceLeft {
+  0%   { transform: translate3d(100%, -50%, 0); }
+  50%  { transform: translate3d(-30px, -50%, 0); }
+  100% { transform: translate3d(0, -50%, 0); }
+}
+@keyframes bounceRight {
+  0%   { transform: translate3d(0, -50%, 0); }
+  50%  { transform: translate3d(calc(100% + 30px), -50%, 0); }
+  100% { transform: translate3d(100%, -50%, 0); }
+}
+@keyframes showSignUp {
+  100% { opacity: 1; visibility: visible; transform: translate3d(0, 0, 0); }
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: $gray;
+  background-size: cover;
+  padding: 40px 0;
+}
+
+.optionsContainer {
+  position: relative;
+  width: 80%;
+}
+
+.optionsText {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $smoky-black;
+  border-radius: $bdrds;
+}
+
+.unregistered,
+.registered {
+  width: 50%;
+  padding: 75px 45px;
+  color: $white;
+  font-weight: $ff-light;
+}
+
+.unregisteredTitle,
+.registeredTitle {
+  margin-bottom: 15px;
+  font-size: 1.66rem;
+  line-height: 1em;
+}
+
+.unregisteredText,
+.registeredText {
+  font-size: .83rem;
+  line-height: 1.4em;
+}
+
+.registeredLogin,
+.unregisteredSignup {
+  margin-top: 30px;
+  border: 1px solid $gray;
+  border-radius: $bdrds;
+  padding: 10px 30px;
+  color: $white;
+  text-transform: uppercase;
+  line-height: 1em;
+  letter-spacing: .2rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+  display: block;
+
+  &:hover {
+    color: $smoky-black;
+    background-color: $gray;
+  }
+}
+
+.forms {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  width: calc(50% - 30px);
+  min-height: 420px;
+  background-color: $white;
+  border-radius: $bdrds;
+  box-shadow: 2px 0 15px rgba($black, .25);
+  overflow: hidden;
+  transform: translate3d(100%, -50%, 0);
+  transition: transform .4s ease-in-out;
+}
+
+.bounceLeft {
+  animation: bounceLeft 1s forwards;
+
+  .formSignup {
+    animation: showSignUp 1s forwards;
+  }
+  .formLogin {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-120px, 0, 0);
+  }
+}
+
+.bounceRight {
+  animation: bounceRight 1s forwards;
+}
+
+.formSignup,
+.formLogin {
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  width: calc(100% - 80px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s ease-in-out, visibility .4s ease-in-out, transform .5s ease-in-out;
+}
+
+.formSignup {
+  transform: translate3d(120px, 0, 0);
+
+  .formsButtons {
+    justify-content: flex-end;
+  }
+}
+
+.formLogin {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.formsTitle {
+  margin-bottom: 45px;
+  font-size: 1.5rem;
+  font-weight: $ff-medium;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: $salmon;
+  letter-spacing: .1rem;
+}
+
+.formsFieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.formsField {
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+}
+
+.formsFieldInput {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid $gray;
+  padding: 6px 20px 6px 6px;
+  font-family: $ff;
+  font-size: 1rem;
+  font-weight: $ff-light;
+  color: darken($gray, 30%);
+  letter-spacing: .1rem;
+  background-color: transparent;
+  outline: 0;
+  transition: border-color .2s ease-in-out;
+
+  &:focus { border-color: darken($gray, 30%); }
+
+  &::placeholder {
+    font-size: .85rem;
+    font-family: $ff;
+    font-weight: $ff-light;
+    letter-spacing: .1rem;
+    color: $gray;
+  }
+}
+
+.formsButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.formsButtonsForgot {
+  font-family: $ff;
+  letter-spacing: .1rem;
+  color: $gray;
+  text-decoration: underline;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color .2s ease-in-out;
+
+  &:hover { color: darken($gray, 10%); }
+}
+
+.formsButtonsAction {
+  background-color: $salmon;
+  border-radius: $bdrds;
+  padding: 10px 35px;
+  font-size: 1rem;
+  font-family: $ff;
+  font-weight: $ff-light;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  border: 0;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+
+  &:hover { background-color: darken($salmon, 10%); }
+}
+
+@media screen and (max-width: 990px) {
+  .forms { min-height: 350px; }
+  .formsButtons { flex-direction: column; }
+  .formLogin .formsButtonsAction { margin-top: 30px; }
+  .formSignup, .formLogin { top: 40px; }
+  .unregistered, .registered { padding: 50px 45px; }
+}

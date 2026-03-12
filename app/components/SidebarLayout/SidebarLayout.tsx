@@ -5,63 +5,7 @@ import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
-import { FaHome } from "react-icons/fa";
-import { FiLoader } from "react-icons/fi";
-import { AiOutlineAntDesign } from "react-icons/ai";
-import { FaCircleDot } from "react-icons/fa6";
-
-type NavLink = {
-  kind: "link";
-  label: string;
-  href: string;
-  icon: React.ReactNode;
-};
-
-type NavGroup = {
-  kind: "group";
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-  items: NavLink[];
-};
-
-type NavItem = NavLink | NavGroup;
-
-const nav: NavItem[] = [
-  { kind: "link", label: "Home", href: "/", icon: <FaHome /> },
-
-  {
-    kind: "group",
-    id: "loaders",
-    label: "Loaders",
-    icon: <FiLoader />,
-    items: [
-      {
-        kind: "link",
-        label: "Gradient Light Preloader",
-        href: "/loaders/gradientLightPreloader",
-        icon: <FaCircleDot />,
-      },
-      { kind: "link", label: "CSS Loader", href: "/loaders/cssLoader", icon: <FaCircleDot /> },
-    ],
-  },
-
-  {
-    kind: "group",
-    id: "ui",
-    label: "UI",
-    icon: <AiOutlineAntDesign />,
-    items: [
-      { kind: "link", label: "Animated 404 Page", href: "/ui/animated404page", icon: <FaCircleDot /> },
-      { kind: "link", label: "Social Media Hover Effect", href: "/ui/socialMediaHoverEffect", icon: <FaCircleDot /> },
-      { kind: "link", label: "Login and Register", href: "/ui/loginAndRegister", icon: <FaCircleDot /> },
-      { kind: "link", label: "Lavalamp CSS Menu", href: "/ui/lavalampCssMenu", icon: <FaCircleDot /> },
-      { kind: "link", label: "Fun 404 Page", href: "/ui/fun404page", icon: <FaCircleDot /> },
-      { kind: "link", label: "Animated Input", href: "/ui/animatedInput", icon: <FaCircleDot /> },
-      { kind: "link", label: "Drawer Menu", href: "/ui/drawerMenu", icon: <FaCircleDot /> },
-    ],
-  },
-];
+import { NavGroup, navigation } from "../../config/navigation";
 
 function isGroupActive(group: NavGroup, pathname: string) {
   return group.items.some(
@@ -79,7 +23,7 @@ export default function SidebarLayout({
 
     const [open, setOpen] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    for (const item of nav) {
+    for (const item of navigation) {
       if (item.kind === "group") {
         init[item.id] = isGroupActive(item, pathname);
       }
@@ -94,7 +38,7 @@ export default function SidebarLayout({
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
       <aside
-        className={`sidebar transition-[width] duration-300 ${collapsed ? "w-16" : "w-64"}`}
+        className={`sidebar flex flex-col transition-[width] duration-300 ${collapsed ? "w-16" : "w-64"}`}
       >
         <div className="h-14 px-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
           {!collapsed && (
@@ -115,8 +59,8 @@ export default function SidebarLayout({
           </button>
         </div>
 
-        <nav className="p-2 space-y-1">
-          {nav.map((item) => {
+        <nav className="p-2 space-y-1 overflow-y-auto flex-1">
+          {navigation.map((item) => {
             if (item.kind === "link") {
               const active = pathname === item.href;
 
@@ -173,7 +117,7 @@ export default function SidebarLayout({
                   <div
                     className={[
                       "overflow-hidden transition-[max-height] duration-300",
-                      isOpen ? "max-h-96" : "max-h-0",
+                      isOpen ? "max-h-auto" : "max-h-0",
                     ].join(" ")}
                   >
                     <div className="mt-1 space-y-1 pl-4">
